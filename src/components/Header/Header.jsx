@@ -1,7 +1,7 @@
 
 import Button from '../Button/Button'
 import { useTelegram } from '../../hooks/useTelegram'
-
+import './Header.css'
 
 function Header() {
 
@@ -10,6 +10,7 @@ function Header() {
   
     return (
         <div className={'header'}>
+           
             <Button onClick={onClose}>Закрыть</Button>
             <span className={'username'}>
                 {user?.username}
