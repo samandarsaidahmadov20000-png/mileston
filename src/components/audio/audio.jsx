@@ -13,7 +13,7 @@ function Audio() {
     <div>
        
       <button onClick={playAudio}>▶️ Воспроизвести</button>
-      <audio ref={audioRef} src="../../src/assets/audios/fon.mp3" />
+      <audio ref={audioRef} src="./fon.mp3" />
     </div>
   );
 }
