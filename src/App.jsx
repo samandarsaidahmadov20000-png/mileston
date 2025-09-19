@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useTelegram } from './hooks/useTelegram';
 import Header from './components/Header/Header';
+import Audio from './components/audio/audio';
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
   return (
     <div>
       
-      
+      <Audio />
       <Header />
       <button onClick={onToggleButton}>Toggle</button>
 
