@@ -20,7 +20,7 @@ function App() {
   return (
     <div>
       App
-      <button onClick={onToggleButton}></button>
+      <button onClick={onToggleButton}>Toggle</button>
 
       
     </div>
