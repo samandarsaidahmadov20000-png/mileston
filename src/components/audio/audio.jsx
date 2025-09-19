@@ -3,17 +3,20 @@ import React, { useRef } from "react";
 function Audio() {
   const audioRef = useRef(null);
 
-  const playAudio = () => {
-    if (audioRef.current) {
-      audioRef.current.play();
+  const playAudio = async () => {
+    try {
+      await audioRef.current.play();
+    } catch (err) {
+      console.error("Ошибка при воспроизведении:", err);
     }
+
   };
 
   return (
     <div>
        
       <button onClick={playAudio}>▶️ Воспроизвести</button>
-      <audio ref={audioRef} src="./fon.mp3" />
+      <audio ref={audioRef} src="/fon.mp3" preload="auto"/>
     </div>
   );
 }
