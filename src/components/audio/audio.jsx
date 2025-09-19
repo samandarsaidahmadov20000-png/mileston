@@ -11,8 +11,9 @@ function Audio() {
 
   return (
     <div>
+       
       <button onClick={playAudio}>▶️ Воспроизвести</button>
-      <audio ref={audioRef} src="/audio.mp3" />
+      <audio ref={audioRef} src="../../src/assets/audios/fon.mp3" />
     </div>
   );
 }
