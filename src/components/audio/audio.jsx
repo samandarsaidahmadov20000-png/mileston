@@ -16,7 +16,7 @@ function Audio() {
     <div>
        
       <button onClick={playAudio}>▶️ Воспроизвести</button>
-      <audio ref={audioRef} src="/fon.mp3" preload="auto"/>
+      <audio ref={audioRef} src="/1/01.MP3" preload="auto"/>
       <button>хорошо</button>
       <button>нормально</button>
       <button>плоха</button>
