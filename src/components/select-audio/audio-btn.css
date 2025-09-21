@@ -1,0 +1,20 @@
+.buttons {
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.buttons-btn {
+    background-color: #FE5005;
+    width: 85px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+
+}

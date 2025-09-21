@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useTelegram } from './hooks/useTelegram';
 import Header from './components/Header/Header';
 import Audio from './components/audio/audio';
+import SelectAduio from './components/select-audio/select-aduio';
 
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
       
       <Audio />
       <Header />
+      <SelectAduio />
+
+
       <button onClick={onToggleButton}>Toggle</button>
 
 
