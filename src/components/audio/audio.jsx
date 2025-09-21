@@ -1,25 +1,63 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-function Audio() {
+function Audio({ selectPageData, closeAudio }) {
   const audioRef = useRef(null);
 
-  const playAudio = async () => {
-    try {
-      await audioRef.current.play();
-    } catch (err) {
-      console.error("Ошибка при воспроизведении:", err);
-    }
+  const selectData = selectPageData[0] || [];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
+  const playAudio = () => {
+    setIsPlaying(true);
+    if (audioRef.current) {
+      audioRef.current.play().catch((err) => {
+        console.log("Ошибка воспроизведения:", err);
+      });
+    }
   };
+
+  const handleEnded = () => {
+    if (currentIndex < selectData.length - 1) {
+      setCurrentIndex((prev) => prev + 1);
+      console.log(currentIndex);
+    } else {
+      console.log("Все треки закончились 🎵");
+      setIsPlaying(false);
+    }
+  };
+  useEffect(() => {
+    if (isPlaying && audioRef.current) {
+      audioRef.current.play().catch(() => {});
+    }
+  }, [currentIndex, isPlaying]);
 
   return (
     <div>
-       
-      <button onClick={playAudio}>▶️ Воспроизвести</button>
-      <audio ref={audioRef} src="/1/01.MP3" preload="auto"/>
-      <button>хорошо</button>
-      <button>нормально</button>
-      <button>плоха</button>
+      <button onClick={playAudio}>Start</button>
+      <button
+        onClick={() => {
+          if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+          }
+          closeAudio();
+        }}
+      >
+        Назад
+      </button>
+      <audio
+        // onEnded={handleEnded}
+        ref={audioRef}
+        src={selectData[currentIndex]}
+      ></audio>
+
+      {isPlaying && (
+        <div>
+          <button onClick={handleEnded}>Хорошо</button>
+          <button onClick={handleEnded}>Нормально</button>
+          <button onClick={handleEnded}>Плохо</button>
+        </div>
+      )}
     </div>
   );
 }

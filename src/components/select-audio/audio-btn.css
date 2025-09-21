@@ -16,5 +16,12 @@
     border: none;
     color: #fff;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+
+.title {
+    margin-bottom: 15px;
+    margin-top: 15px;
 
 }
