@@ -18,16 +18,62 @@ function App() {
     {
       page: 1,
       audios: [
-        "/1/01.MP3",
-        "/1/02.MP3",
-        "/1/03.MP3",
-        "/1/04.MP3",
-        "/1/05.MP3",
-        "/1/06.MP3",
-        "/1/07.MP3",
-        "/1/08.MP3",
-        "/1/09.MP3",
-        "/1/10.MP3",
+        {
+          audiPath: "/1/01.MP3",
+          ru: "родственник",
+          en: "relative",
+        },
+        {
+          audiPath: "/1/02.MP3",
+          ru: "семья",
+          en: "family",
+        },
+
+        {
+          audiPath: "/1/03.MP3",
+          ru: "родители",
+          en: "parents",
+        },
+
+        {
+          audiPath: "/1/04.MP3",
+          ru: "отец",
+          en: "father; dad",
+        },
+
+        {
+          audiPath: "/1/05.MP3",
+          ru: "мама",
+          en: "mother; mum / mom",
+        },
+
+        {
+          audiPath: "/1/06.MP3",
+          ru: "брат",
+          en: "brother",
+        },
+
+        {
+          audiPath: "/1/07.MP3",
+          ru: "сестра",
+          en: "sister",
+        },
+
+        {
+          audiPath: "/1/08.MP3",
+          ru: "брат или сестра",
+          en: "sibling",
+        },
+        {
+          audiPath: "/1/09.MP3",
+          ru: "муж",
+          en: "husband",
+        },
+        {
+          audiPath: "/1/10.MP3",
+          ru: "жена",
+          en: "wife",
+        },
       ],
     },
   ];

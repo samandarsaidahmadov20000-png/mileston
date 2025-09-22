@@ -8,12 +8,10 @@ function Audio({ selectPageData, closeAudio }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const [showButtons, setShowButtons] = useState(false);
-
   const [countMassive, setCountMassive] = useState(0);
+  const [showRu, setShowRu] = useState(false);
 
-  console.log(countMassive);
-
-  console.log(selectData);
+  // console.log(selectData);
 
   const playAudio = () => {
     setIsPlaying(true);
@@ -31,7 +29,7 @@ function Audio({ selectPageData, closeAudio }) {
 
   const handleChoice = () => {
     const randomIndex = Math.floor(Math.random() * selectData.length);
-   
+
     if (selectData.length > countMassive) {
       setCountMassive(countMassive + 1);
       setCurrentIndex(randomIndex);
@@ -48,6 +46,8 @@ function Audio({ selectPageData, closeAudio }) {
       audioRef.current.play().catch(() => {});
     }
   }, [currentIndex, isPlaying]);
+
+  // console.log(selectData[currentIndex].ru);
 
   return (
     <div>
@@ -66,7 +66,7 @@ function Audio({ selectPageData, closeAudio }) {
       <audio
         onEnded={handleEnded}
         ref={audioRef}
-        src={selectData[currentIndex]}
+        src={selectData[currentIndex].audiPath}
       ></audio>
 
       {showButtons && (
@@ -75,6 +75,12 @@ function Audio({ selectPageData, closeAudio }) {
           <button onClick={handleChoice}>Нормально</button>
           <button onClick={handleChoice}>Плохо</button>
         </div>
+      )}
+
+      {showButtons ? (
+        <p>{selectData[currentIndex].en}</p>
+      ) : (
+        <p>{selectData[currentIndex].ru}</p>
       )}
     </div>
   );
