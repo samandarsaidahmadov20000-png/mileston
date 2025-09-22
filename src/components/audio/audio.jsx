@@ -7,8 +7,17 @@ function Audio({ selectPageData, closeAudio }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const [showButtons, setShowButtons] = useState(false);
+
+  const [countMassive, setCountMassive] = useState(0);
+
+  console.log(countMassive);
+
+  console.log(selectData);
+
   const playAudio = () => {
     setIsPlaying(true);
+    setShowButtons(false);
     if (audioRef.current) {
       audioRef.current.play().catch((err) => {
         console.log("Ошибка воспроизведения:", err);
@@ -17,14 +26,23 @@ function Audio({ selectPageData, closeAudio }) {
   };
 
   const handleEnded = () => {
-    if (currentIndex < selectData.length - 1) {
-      setCurrentIndex((prev) => prev + 1);
-      console.log(currentIndex);
+    setShowButtons(true);
+  };
+
+  const handleChoice = () => {
+    const randomIndex = Math.floor(Math.random() * selectData.length);
+   
+    if (selectData.length > countMassive) {
+      setCountMassive(countMassive + 1);
+      setCurrentIndex(randomIndex);
+      setShowButtons(false);
+      setIsPlaying(true);
     } else {
       console.log("Все треки закончились 🎵");
       setIsPlaying(false);
     }
   };
+
   useEffect(() => {
     if (isPlaying && audioRef.current) {
       audioRef.current.play().catch(() => {});
@@ -46,16 +64,16 @@ function Audio({ selectPageData, closeAudio }) {
         Назад
       </button>
       <audio
-        // onEnded={handleEnded}
+        onEnded={handleEnded}
         ref={audioRef}
         src={selectData[currentIndex]}
       ></audio>
 
-      {isPlaying && (
+      {showButtons && (
         <div>
-          <button onClick={handleEnded}>Хорошо</button>
-          <button onClick={handleEnded}>Нормально</button>
-          <button onClick={handleEnded}>Плохо</button>
+          <button onClick={handleChoice}>Хорошо</button>
+          <button onClick={handleChoice}>Нормально</button>
+          <button onClick={handleChoice}>Плохо</button>
         </div>
       )}
     </div>
