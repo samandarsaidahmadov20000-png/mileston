@@ -15,7 +15,7 @@ function SelectAduio({ selectedPage }) {
 
   return (
     <>
-      <h1 className="title">Select page</h1>
+      <h2 className="title">Выбрать страницу</h2>
       <div className="buttons">
         {btnDataAuduio.map((item, i) => (
           <button
