@@ -37,6 +37,7 @@ function Audio({ selectPageData, closeAudio }) {
   }, [selectData]);
 
   const playAudio = () => {
+    setShowRu(true);
     setIsPlaying(true);
     setShowButtons(false);
     if (audioRef.current) {
@@ -156,7 +157,7 @@ function Audio({ selectPageData, closeAudio }) {
         </div>
       )}
 
-      {currentIndex !== null &&
+      {showRu && currentIndex !== null &&
         (showButtons ? (
           <p>{selectData[currentIndex].en}</p>
         ) : (
