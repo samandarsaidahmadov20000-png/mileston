@@ -1,0 +1,17 @@
+.result{
+    width: 90%;
+    border: 2px solid #FE5005;
+    border-radius: 10px;
+    margin: 20px 15px;
+    text-align: center;
+}
+
+.result-row{
+    border: 3px solid #FE5005;
+    /* background-color: #FE5005; */
+}
+
+.result__title{
+    margin-left: 15px;
+    margin-top: 15px;
+}

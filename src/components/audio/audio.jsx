@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import Result from "../result/result";
 
+import "./audio.css";
+
 function Audio({ selectPageData, closeAudio }) {
   const audioRef = useRef(null);
 
@@ -12,10 +14,7 @@ function Audio({ selectPageData, closeAudio }) {
   const [countMassive, setCountMassive] = useState(0);
   const [showRu, setShowRu] = useState(false);
   const [order, setOrder] = useState([]);
-  const [word, setWord] = useState(false);
-
-  // console.log(selectData);
-  // console.log(countMassive);
+  const [startStatus, setStartStatus] = useState(true);
 
   const [resultAudio, setResultAudio] = useState({
     good: [],
@@ -23,7 +22,7 @@ function Audio({ selectPageData, closeAudio }) {
     bad: [],
   });
 
-  console.log(resultAudio.bad);
+  console.log(resultAudio);
 
   // console.log(currentIndex, showButtons);
 
@@ -37,6 +36,7 @@ function Audio({ selectPageData, closeAudio }) {
   }, [selectData]);
 
   const playAudio = () => {
+    setStartStatus(false);
     setShowRu(true);
     setIsPlaying(true);
     setShowButtons(false);
@@ -113,20 +113,25 @@ function Audio({ selectPageData, closeAudio }) {
 
   // console.log(selectData[currentIndex].ru);
 
+  function back() {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+    closeAudio();
+  }
+
   return (
     <div>
-      <button onClick={playAudio}>Start</button>
-      <button
-        onClick={() => {
-          if (audioRef.current) {
-            audioRef.current.pause();
-            audioRef.current.currentTime = 0;
-          }
-          closeAudio();
-        }}
-      >
+      <button className="back-btn" onClick={back}>
         Назад
       </button>
+      {startStatus && (
+        <button className="start-btn" onClick={playAudio}>
+          Start
+        </button>
+      )}
+
       {currentIndex !== null ? (
         <audio
           onEnded={handleEnded}
@@ -137,32 +142,35 @@ function Audio({ selectPageData, closeAudio }) {
         <Result resultAudio={resultAudio} />
       )}
 
+      <div className="text-ru">
+        {showRu &&
+          currentIndex !== null &&
+          (showButtons ? (
+            <p className="text-r">{selectData[currentIndex].en}</p>
+          ) : (
+            <p className="text-r">{selectData[currentIndex].ru}</p>
+          ))}
+      </div>
+
       {showButtons && (
-        <div>
+        <div className="btn-result">
           <button
             onClick={() => handleChoice("good", selectData[currentIndex].en)}
           >
-            Хорошо
+            Yahshi
           </button>
           <button
             onClick={() => handleChoice("middle", selectData[currentIndex].en)}
           >
-            Нормально
+            O'rta
           </button>
           <button
             onClick={() => handleChoice("bad", selectData[currentIndex].en)}
           >
-            Плохо
+            Yomon
           </button>
         </div>
       )}
-
-      {showRu && currentIndex !== null &&
-        (showButtons ? (
-          <p>{selectData[currentIndex].en}</p>
-        ) : (
-          <p>{selectData[currentIndex].ru}</p>
-        ))}
     </div>
   );
 }
