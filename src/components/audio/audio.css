@@ -12,7 +12,7 @@
 }
 
 .start-btn {
-    background-color: #FE5005;
+    background-color: rgb(79, 2, 79);
     border: none;
     width: 200px;
     padding: 7px 0;
@@ -27,7 +27,7 @@
 .back-btn {
     margin-left: 15px;
     margin-top: 15px;
-    background-color: #FE5005;
+    background-color: rgb(79, 2, 79);
     border: none;
     color: #fff;
     width: 80px;
@@ -47,23 +47,25 @@
 }
 
 .btn-result button {
-    background-color: #FE5005;
+    background-color: rgb(79, 2, 79);
     border: none;
     color: #fff;
     padding: 4px 14px;
     cursor: pointer;
     border-radius: 4px;
 }
-.btn-result button{
-    background-color: #FE5005;
-    border: none;
-    color: #fff;
-    padding: 4px 14px;
-    cursor: pointer;
-    border-radius: 4px;
-}
+
 .btn-result button {
-    background-color: #FE5005;
+    background-color: rgb(79, 2, 79);
+    border: none;
+    color: #fff;
+    padding: 4px 14px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-result button {
+    background-color: rgb(79, 2, 79);
     border: none;
     color: #fff;
     padding: 4px 14px;

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Result from "../result/result";
+import Result from "../beginner/result/result";
 
 import "./audio.css";
 
@@ -123,7 +123,7 @@ function Audio({ selectPageData, closeAudio }) {
 
   return (
     <div>
-      <button className="back-btn" onClick={back}>
+      <button className="wrap-back" onClick={back}>
         Назад
       </button>
       {startStatus && (
